@@ -5,6 +5,7 @@ import SurveyTable from "./survey-table/survey-table";
 import SurveyTableHeader from "./survey-table/survey-table-header/survey-table-header";
 import SurveyTableRow from "./survey-table/survey-table-row/survey-table-row";
 import store from "../../store";
+import SurveyCheckbox from "../shared/survey-checkbox/survey-checkbox";
 
 
 class ContentComponent extends React.Component {
@@ -24,7 +25,7 @@ class ContentComponent extends React.Component {
 
                     <div className="col-11 mt-4 pl-0 pr-0">
                         <SurveyTable>
-                            <div>Chk</div>
+                            <SurveyCheckbox/>
                             <SurveyTableHeader/>
                         </SurveyTable>
 
