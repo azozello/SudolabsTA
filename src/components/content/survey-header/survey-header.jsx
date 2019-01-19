@@ -1,5 +1,6 @@
 import React from 'react';
 import './survey-header.scss';
+import NewSurveyButton from "../../shared/new-survey-button/new-survey-button";
 
 
 function SurveyHeader() {
@@ -13,9 +14,7 @@ function SurveyHeader() {
                 </div>
 
                 <div className="col-auto">
-                    <button className="btn new-survey-button">
-                        New Survey
-                    </button>
+                    <NewSurveyButton/>
                 </div>
             </div>
         </div>
