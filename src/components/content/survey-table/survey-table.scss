@@ -8,7 +8,7 @@
 
 .survey-table {
   display: grid;
-  grid-template-columns: 3rem 1fr 1rem;
+  grid-template-columns: 3rem 1fr 2rem;
 
   .survey-table-header {
     @extend .abstract_survey_item;

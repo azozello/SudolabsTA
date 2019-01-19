@@ -1,5 +1,10 @@
-import {ADD_ARTICLE} from "../constants/action-types";
+import {OPEN_SURVEY_TABLE_ROW, SORT_SURVEYS} from "../constants/action-types";
 
-export function addArticle(payload) {
-    return { type: ADD_ARTICLE, payload }
+
+export function openSurveyTableRow(payload) {
+    return { type: OPEN_SURVEY_TABLE_ROW, payload}
+}
+
+export function sortSurveys(payload) {
+    return { type: SORT_SURVEYS, payload}
 }

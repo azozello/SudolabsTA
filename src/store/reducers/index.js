@@ -1,4 +1,5 @@
 import logo from "../../assets/images/logo.jpg";
+import {OPEN_SURVEY_TABLE_ROW, SORT_SURVEYS} from "../constants/action-types";
 
 const initialState = {
     surveys: [
@@ -12,10 +13,10 @@ const initialState = {
             created: new Date(2017, 12, 25),
             valid_until: new Date(2018, 1, 27),
             created_by: logo,
-            opened: true
+            opened: false
         },
         {
-            unique: 1,
+            unique: 3,
             title: 'Another title',
             state: 'No state',
             viewed: 503,
@@ -27,7 +28,7 @@ const initialState = {
             opened: false
         },
         {
-            unique: 1,
+            unique: 4,
             title: 'Title',
             state: 'State',
             viewed: 803,
@@ -39,7 +40,7 @@ const initialState = {
             opened: false
         },
         {
-            unique: 1,
+            unique: 5,
             title: 'Title',
             state: 'State',
             viewed: 1121,
@@ -51,7 +52,7 @@ const initialState = {
             opened: false
         },
         {
-            unique: 1,
+            unique: 6,
             title: 'Title',
             state: 'State',
             viewed: 312000,
@@ -63,7 +64,7 @@ const initialState = {
             opened: false
         },
         {
-            unique: 1,
+            unique: 7,
             title: 'Title',
             state: 'State',
             viewed: 20633,
@@ -78,7 +79,23 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-    switch (action) {
+    switch (action.type) {
+        case SORT_SURVEYS:
+            const sortedSurveys = state.surveys.map(s => ({...s}));
+            sortedSurveys.sort(action.payload);
+            return {
+                surveys: sortedSurveys
+            };
+        case OPEN_SURVEY_TABLE_ROW:
+            const {unique} = action.payload;
+            const newSurveys = state.surveys.map(s => (
+                {
+                    ...s,
+                    opened: s.unique === unique && s.opened === false
+                }));
+            return {
+                surveys: newSurveys
+            };
         default:
             return state;
     }

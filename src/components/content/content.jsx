@@ -15,6 +15,11 @@ class ContentComponent extends React.Component {
 
     componentDidMount() {
         this.setState(store.getState());
+        store.subscribe(
+            (smth) => {
+                this.setState(store.getState());
+            }
+        )
     }
 
     render() {

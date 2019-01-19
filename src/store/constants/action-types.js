@@ -1,1 +1,2 @@
-export const ADD_ARTICLE = "ADD_ARTICLE";
+export const OPEN_SURVEY_TABLE_ROW = "OPER_SURVEY_TABLE_ROW";
+export const SORT_SURVEYS = "SORT_SURVEYS";

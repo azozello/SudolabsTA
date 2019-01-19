@@ -8,14 +8,15 @@ const SurveyTableDot = styled.div`
       border-radius: 0.5rem;
       margin: 0.5rem;
       margin-top: ${({First}) => First && '1.2rem'};
+      background-color: ${({Selected}) => Selected && '#eaeaea'};
 `;
 
-function Dots() {
+function Dots(props) {
     return (
-        <div>
-            <SurveyTableDot First={true}/>
-            <SurveyTableDot/>
-            <SurveyTableDot/>
+        <div onClick={props.onDotsClick}>
+            <SurveyTableDot Selected={props.selected} First={true}/>
+            <SurveyTableDot Selected={props.selected}/>
+            <SurveyTableDot Selected={props.selected}/>
         </div>
     );
 }
