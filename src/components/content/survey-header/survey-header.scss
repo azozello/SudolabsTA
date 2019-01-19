@@ -1,0 +1,27 @@
+@import "../../../assets/styles/_colors.scss";
+
+.survey-header-container {
+  padding: {
+    top: 1.5rem;
+    bottom: 1.4rem;
+  };
+  border-bottom: 1.5px solid #2e2c3a;
+}
+
+.survey-link-header {
+  font-size: 2rem;
+  color: #eaeaea;
+  padding: {
+    bottom: 0;
+  };
+}
+
+.new-survey-button {
+  background-image: linear-gradient(to bottom, #e365f9a1 25%, #9f5bffe3 65%);
+  color: #eaeaea;
+  padding: 0.1rem 1.5rem;
+  border: 0;
+  &:hover {
+    background-image: linear-gradient(to bottom, #9f5bffe3 25%, #e365f9a1 65%);
+  }
+}
