@@ -1,6 +1,7 @@
 import React from 'react';
 import './side-nav.scss';
 import SideNavLink from "./side-nav-item/side-nav-link";
+import {NavLink} from 'react-router-dom';
 
 class SideNav extends React.Component {
     state = {
@@ -42,9 +43,13 @@ class SideNav extends React.Component {
                 <div className="row">
                     {
                         this.state.links.map(linkItem =>
-                            <div className={linkItem.id === 7 ? 'col-12 side-nav-active' : 'col-12'}>
-                                <SideNavLink key={linkItem.id} link={linkItem.link}/>
-                            </div>
+                            <NavLink className={'side-nav-link'}
+                                     activeClassName={'side-nav-active'}
+                                     to={'/' + linkItem.link}>
+                                <div className={'col-12'}>
+                                    <SideNavLink key={linkItem.id} link={linkItem.link}/>
+                                </div>
+                            </NavLink>
                         )}
                 </div>
             </div>

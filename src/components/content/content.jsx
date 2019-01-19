@@ -12,9 +12,8 @@ class ContentComponent extends React.Component {
         surveys: []
     };
 
-    constructor() {
-        super();
-        this.state = store.getState();
+    componentDidMount() {
+        this.setState(store.getState());
     }
 
     render() {
