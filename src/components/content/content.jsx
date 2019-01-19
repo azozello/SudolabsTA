@@ -6,6 +6,7 @@ import SurveyTableHeader from "./survey-table/survey-table-header/survey-table-h
 import SurveyTableRow from "./survey-table/survey-table-row/survey-table-row";
 import store from "../../store";
 import SurveyCheckbox from "../shared/survey-checkbox/survey-checkbox";
+import {checkAllSurveyTableRows} from "../../store/actions";
 
 
 class ContentComponent extends React.Component {
@@ -16,11 +17,15 @@ class ContentComponent extends React.Component {
     componentDidMount() {
         this.setState(store.getState());
         store.subscribe(
-            (smth) => {
+            () => {
                 this.setState(store.getState());
             }
         )
     }
+
+    onAllCheckboxSelect = () => {
+        store.dispatch(checkAllSurveyTableRows());
+    };
 
     render() {
         return (
@@ -30,13 +35,13 @@ class ContentComponent extends React.Component {
 
                     <div className="col-11 mt-4 pl-0 pr-0">
                         <SurveyTable>
-                            <SurveyCheckbox/>
+                            <SurveyCheckbox onCheckboxSelect={this.onAllCheckboxSelect}/>
                             <SurveyTableHeader/>
                         </SurveyTable>
 
                         {this.state.surveys.map(survey =>
                             <SurveyTable>
-                                <SurveyTableRow key={survey.unicode} survey={survey}/>
+                                <SurveyTableRow key={survey.unique} survey={survey}/>
                             </SurveyTable>
                         )}
                     </div>

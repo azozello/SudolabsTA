@@ -17,8 +17,10 @@ viewed: 1488
 
 function SurveyTableRowItem(data) {
     const {survey} = data;
+    let itemClassName = 'survey-table-item ';
+    itemClassName += survey.opened ? 'selected' : '';
     return (
-        <div className="survey-table-item">
+        <div className={itemClassName}>
             <SurveyTableRowItemText first={true}>
                 {survey.title}
             </SurveyTableRowItemText>

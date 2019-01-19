@@ -1,5 +1,10 @@
 import logo from "../../assets/images/logo.jpg";
-import {OPEN_SURVEY_TABLE_ROW, SORT_SURVEYS} from "../constants/action-types";
+import {
+    CHECK_ALL_SURVEY_TABLE_ROWS,
+    CHECK_SURVEY_TABLE_ROW,
+    OPEN_SURVEY_TABLE_ROW,
+    SORT_SURVEYS
+} from "../constants/action-types";
 
 const initialState = {
     surveys: [
@@ -13,6 +18,7 @@ const initialState = {
             created: new Date(2017, 12, 25),
             valid_until: new Date(2018, 1, 27),
             created_by: logo,
+            checked: false,
             opened: false
         },
         {
@@ -25,6 +31,7 @@ const initialState = {
             created: new Date(2017, 12, 21),
             valid_until: new Date(2018, 1, 24),
             created_by: logo,
+            checked: false,
             opened: false
         },
         {
@@ -37,6 +44,7 @@ const initialState = {
             created: new Date(2017, 12, 26),
             valid_until: new Date(2018, 1, 30),
             created_by: logo,
+            checked: false,
             opened: false
         },
         {
@@ -49,6 +57,7 @@ const initialState = {
             created: new Date(2017, 12, 12),
             valid_until: new Date(2018, 1, 19),
             created_by: logo,
+            checked: false,
             opened: false
         },
         {
@@ -61,6 +70,7 @@ const initialState = {
             created: new Date(2017, 12, 9),
             valid_until: new Date(2018, 1, 28),
             created_by: logo,
+            checked: false,
             opened: false
         },
         {
@@ -73,6 +83,7 @@ const initialState = {
             created: new Date(2017, 12, 30),
             valid_until: new Date(2018, 1, 29),
             created_by: logo,
+            checked: false,
             opened: false
         }
     ]
@@ -80,12 +91,27 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
+        case CHECK_ALL_SURVEY_TABLE_ROWS:
+            const checkedAllSurveys = state.surveys.map(s => ({...s}));
+            const allTrue = checkedAllSurveys.find(s => s.checked === false) === undefined;
+            if (allTrue) {
+                checkedAllSurveys.forEach(s => s.checked = false)
+            } else {
+                checkedAllSurveys.forEach(s => s.checked = true)
+            }
+            return { surveys: checkedAllSurveys };
+
+        case CHECK_SURVEY_TABLE_ROW:
+            const checkedSurveys = state.surveys.map(s => ({...s}));
+            checkedSurveys.find(s => s.unique === action.payload.unique).checked
+                = !checkedSurveys.find(s => s.unique === action.payload.unique).checked;
+            return {surveys: checkedSurveys};
+
         case SORT_SURVEYS:
             const sortedSurveys = state.surveys.map(s => ({...s}));
             sortedSurveys.sort(action.payload);
-            return {
-                surveys: sortedSurveys
-            };
+            return {surveys: sortedSurveys};
+
         case OPEN_SURVEY_TABLE_ROW:
             const {unique} = action.payload;
             const newSurveys = state.surveys.map(s => (
@@ -93,9 +119,8 @@ function rootReducer(state = initialState, action) {
                     ...s,
                     opened: s.unique === unique && s.opened === false
                 }));
-            return {
-                surveys: newSurveys
-            };
+            return {surveys: newSurveys};
+
         default:
             return state;
     }

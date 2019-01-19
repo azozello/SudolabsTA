@@ -5,7 +5,7 @@ import Dots from "../../../shared/dots/dots";
 import SurveyTableRowShadow from "./survey-table-row-shadow/survey-table-row-shadow";
 import SurveyCheckbox from "../../../shared/survey-checkbox/survey-checkbox";
 import store from "../../../../store";
-import {openSurveyTableRow} from "../../../../store/actions";
+import {checkSurveyTableRow, openSurveyTableRow} from "../../../../store/actions";
 
 
 class SurveyTableRow extends React.Component{
@@ -20,7 +20,7 @@ class SurveyTableRow extends React.Component{
         const {survey} = this.props;
         return (
             <React.Fragment>
-                <SurveyCheckbox margin={true}/>
+                <SurveyCheckbox onCheckboxSelect={this.onCheckboxSelected} checked={survey.checked} margin={true}/>
                 <SurveyTableRowItem survey={survey}/>
                 <Dots onDotsClick={this.onDotsClicked} selected={survey.opened}/>
 
@@ -33,6 +33,10 @@ class SurveyTableRow extends React.Component{
 
     onDotsClicked = () => {
         store.dispatch(openSurveyTableRow(this.survey));
+    };
+
+    onCheckboxSelected = () => {
+        store.dispatch(checkSurveyTableRow(this.survey));
     }
 }
 
