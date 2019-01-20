@@ -10,7 +10,7 @@ function SurveyTableRowItem(data) {
     return (
         <div className={itemClassName}>
             {survey.data.map(d =>
-                <SurveyTableRowItemText first={d.key === 'title'}>
+                <SurveyTableRowItemText key={d.key} first={d.key === 'title'}>
                     {d.value}
                 </SurveyTableRowItemText>
             )}

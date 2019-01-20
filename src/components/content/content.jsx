@@ -12,14 +12,19 @@ import {checkAllSurveyTableRows} from "../../store/actions";
 class ContentComponent extends React.Component {
     state = {
         headers: [],
+        sorted: {},
         surveys: []
     };
+
+    checkAll = false;
 
     componentDidMount() {
         this.setState(store.getState());
         store.subscribe(
             () => {
-                this.setState(store.getState());
+                const newState = store.getState();
+                this.checkAll = newState.surveys.find(s => s.checked === false) === undefined;
+                this.setState(newState);
             }
         )
     }
@@ -37,12 +42,12 @@ class ContentComponent extends React.Component {
 
                     <div className="col-11 mt-4 pl-0 pr-0">
                         <SurveyTable>
-                            <SurveyCheckbox onCheckboxSelect={this.onAllCheckboxSelect}/>
+                            <SurveyCheckbox checked={this.checkAll} onCheckboxSelect={this.onAllCheckboxSelect}/>
                             <SurveyTableHeader sorted={sorted} headers={headers}/>
                         </SurveyTable>
 
                         {surveys.map(survey =>
-                            <SurveyTable>
+                            <SurveyTable key={survey.unique}>
                                 <SurveyTableRow key={survey.unique} survey={survey}/>
                             </SurveyTable>
                         )}

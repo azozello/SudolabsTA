@@ -43,7 +43,7 @@ class SideNav extends React.Component {
                 <div className="row">
                     {
                         this.state.links.map(linkItem =>
-                            <NavLink className={'side-nav-link'}
+                            <NavLink key={linkItem.id} className={'side-nav-link'}
                                      activeClassName={'side-nav-active'}
                                      to={'/' + linkItem.link}>
                                 <div className={'col-12'}>

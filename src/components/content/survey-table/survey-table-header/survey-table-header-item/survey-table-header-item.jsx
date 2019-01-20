@@ -14,7 +14,6 @@ class SurveyTableHeaderItem extends React.Component {
     };
 
     render() {
-        console.log(this.props.sorted);
         return (
             <div onClick={this.onClicked} className={this.props.index === 0 ? 'ml-3' : ''}>
                 <p className="survey-table-header-item-text mb-0">
