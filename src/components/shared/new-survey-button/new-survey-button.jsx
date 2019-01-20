@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const NewSurveyButtonBtn = styled.button`
   background-image: linear-gradient(to bottom, #e365f9a1 25%, #9f5bffe3 65%);
   color: #eaeaea;
@@ -11,12 +12,10 @@ const NewSurveyButtonBtn = styled.button`
   }
 `;
 
-function NewSurveyButton() {
-    return (
-        <NewSurveyButtonBtn>
-            New Survey
-        </NewSurveyButtonBtn>
-    );
-}
+const NewSurveyButton = ({name}) => (
+    <NewSurveyButtonBtn>
+        {name}
+    </NewSurveyButtonBtn>
+);
 
 export default NewSurveyButton

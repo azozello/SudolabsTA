@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import logo from './assets/images/down.jpg';
 import './App.scss';
 import DownLogo from "./components/shared/down-logo/down-logo";
 import Header from "./components/header/header";
@@ -18,7 +19,7 @@ function App() {
                     <Content/>
                 </div>
             </div>
-            <DownLogo/>
+            <DownLogo logo={logo}/>
         </React.Fragment>
     );
 }

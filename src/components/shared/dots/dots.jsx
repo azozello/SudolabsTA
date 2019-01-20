@@ -11,14 +11,12 @@ const SurveyTableDot = styled.div`
       background-color: ${({Selected}) => Selected && '#eaeaea'};
 `;
 
-function Dots(props) {
-    return (
-        <div onClick={props.onDotsClick}>
-            <SurveyTableDot Selected={props.selected} First={true}/>
-            <SurveyTableDot Selected={props.selected}/>
-            <SurveyTableDot Selected={props.selected}/>
-        </div>
-    );
-}
+const Dots = ({onDotsClick, selected}) => (
+    <div onClick={onDotsClick}>
+        <SurveyTableDot Selected={selected} First={true}/>
+        <SurveyTableDot Selected={selected}/>
+        <SurveyTableDot Selected={selected}/>
+    </div>
+);
 
 export default Dots

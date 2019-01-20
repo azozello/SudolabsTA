@@ -20,14 +20,12 @@ const SurveyCheckboxDiv = styled.div`
       margin-left: auto;
 `;
 
-function SurveyCheckbox(props) {
-    return (
-        <div onClick={props.onCheckboxSelect}>
-            <SurveyCheckboxDiv Margin={props.margin}>
-                <SurveyCheckboxCheck Checked={props.checked}/>
-            </SurveyCheckboxDiv>
-        </div>
-    );
-}
+const SurveyCheckbox = ({margin, checked, onCheckboxSelect}) => (
+    <div>
+        <SurveyCheckboxDiv onClick={onCheckboxSelect} Margin={margin}>
+            <SurveyCheckboxCheck Checked={checked}/>
+        </SurveyCheckboxDiv>
+    </div>
+);
 
 export default SurveyCheckbox

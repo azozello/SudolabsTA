@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import icon from "../../../assets/images/logo.jpg";
-
 
 const CircleIconWrapper = styled.div`
         margin-top: 0.65rem;
@@ -12,14 +10,13 @@ const CircleIconWrapper = styled.div`
         border: 2px solid #03f3ff;
 `;
 
-function CircleIcon() {
-    return (
-        <div>
-            <CircleIconWrapper>
-                <img src={icon} alt={'Alternative text'} className="img-fluid rounded-circle"/>
-            </CircleIconWrapper>
-        </div>
-    );
-}
+const CircleIcon = ({icon}) => (
+    <div>
+        <CircleIconWrapper>
+            <img src={icon} alt={'Alternative text'} className="img-fluid rounded-circle"/>
+        </CircleIconWrapper>
+    </div>
+);
+
 
 export default CircleIcon

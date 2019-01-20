@@ -14,7 +14,7 @@ function SurveyHeader() {
                 </div>
 
                 <div className="col-auto">
-                    <NewSurveyButton/>
+                    <NewSurveyButton name={'New survey'}/>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ import {checkAllSurveyTableRows} from "../../store/actions";
 
 class ContentComponent extends React.Component {
     state = {
+        headers: [],
         surveys: []
     };
 
@@ -28,6 +29,7 @@ class ContentComponent extends React.Component {
     };
 
     render() {
+        const {sorted, headers, surveys} = this.state;
         return (
             <div className="col-11 content pb-5">
                 <div className="row justify-content-center">
@@ -36,10 +38,10 @@ class ContentComponent extends React.Component {
                     <div className="col-11 mt-4 pl-0 pr-0">
                         <SurveyTable>
                             <SurveyCheckbox onCheckboxSelect={this.onAllCheckboxSelect}/>
-                            <SurveyTableHeader/>
+                            <SurveyTableHeader sorted={sorted} headers={headers}/>
                         </SurveyTable>
 
-                        {this.state.surveys.map(survey =>
+                        {surveys.map(survey =>
                             <SurveyTable>
                                 <SurveyTableRow key={survey.unique} survey={survey}/>
                             </SurveyTable>
