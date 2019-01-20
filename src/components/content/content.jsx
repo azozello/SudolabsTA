@@ -46,8 +46,8 @@ class ContentComponent extends React.Component {
                             <SurveyTableHeader sorted={sorted} headers={headers}/>
                         </SurveyTable>
 
-                        {surveys.map(survey =>
-                            <SurveyTable key={survey.unique}>
+                        {surveys.map((survey, index) =>
+                            <SurveyTable opened={this.state.surveys[index].opened ? 'open' : 'close'} key={survey.unique}>
                                 <SurveyTableRow key={survey.unique} survey={survey}/>
                             </SurveyTable>
                         )}

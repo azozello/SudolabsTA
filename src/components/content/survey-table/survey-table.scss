@@ -9,6 +9,8 @@
 .survey-table {
   display: grid;
   grid-template-columns: 3rem 1fr 2rem;
+  position: relative;
+  background-color: $content_bg_color;
 
   .survey-table-header {
     @extend .abstract_survey_item;
@@ -54,4 +56,30 @@
       border-bottom-right-radius: 0.5rem;
     }
   }
+}
+
+.survey-table-down {
+  animation: fall-down 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.survey-table-up {
+  animation: rise-up 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fall-down {
+  from {
+    height: 72px;
+  }
+  to { height: 120px}
+}
+
+@keyframes rise-up {
+  from {
+    height: 120px;
+  }
+  to { height: 72px}
 }
