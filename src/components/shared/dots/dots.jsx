@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import './dots-extend.scss';
 
 const SurveyTableDot = styled.div`
       background-color: #3e425a;
@@ -8,11 +9,12 @@ const SurveyTableDot = styled.div`
       border-radius: 0.5rem;
       margin: 0.5rem;
       margin-top: ${({First}) => First && '1.2rem'};
-      background-color: ${({Selected}) => Selected && '#eaeaea'};
+      background-color: ${({Selected}) => (Selected) && '#eaeaea'};
 `;
 
+
 const Dots = ({onDotsClick, selected}) => (
-    <div onClick={onDotsClick}>
+    <div className={'dots-container'} onClick={onDotsClick}>
         <SurveyTableDot Selected={selected} First={true}/>
         <SurveyTableDot Selected={selected}/>
         <SurveyTableDot Selected={selected}/>
