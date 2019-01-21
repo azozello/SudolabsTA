@@ -22,7 +22,7 @@ class SurveyTableRow extends React.Component{
             <React.Fragment>
                 <SurveyCheckbox onCheckboxSelect={this.onCheckboxSelected} checked={survey.checked} margin={true}/>
                 <SurveyTableRowItem survey={survey}/>
-                <Dots onDotsClick={this.onDotsClicked} selected={survey.opened}/>
+                <Dots opened={survey.opened ? 'open' : 'close'} onDotsClick={this.onDotsClicked} selected={survey.opened}/>
 
                 <div></div>
                 <SurveyTableRowShadow opened={survey.opened}/>

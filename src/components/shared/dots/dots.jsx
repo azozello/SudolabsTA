@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './dots-extend.scss';
 
 const SurveyTableDot = styled.div`
+      position: relative;
       background-color: #3e425a;
       width: 0.5rem;
       height: 0.5rem;
@@ -13,12 +14,17 @@ const SurveyTableDot = styled.div`
 `;
 
 
-const Dots = ({onDotsClick, selected}) => (
-    <div className={'dots-container'} onClick={onDotsClick}>
-        <SurveyTableDot Selected={selected} First={true}/>
-        <SurveyTableDot Selected={selected}/>
-        <SurveyTableDot Selected={selected}/>
-    </div>
-);
+const Dots = ({onDotsClick, selected, opened}) => {
+    let classAnimationName = '';
+    if (opened === 'open') classAnimationName = 'dots-container-down';
+    if (opened === 'close') classAnimationName = 'dots-container-up';
+    return (
+        <div className={'dots-container ' + classAnimationName} onClick={onDotsClick}>
+            <SurveyTableDot className={'first'} Selected={selected} First={true}/>
+            <SurveyTableDot className={'second'} Selected={selected}/>
+            <SurveyTableDot className={'third'} Selected={selected}/>
+        </div>
+    );
+};
 
 export default Dots
